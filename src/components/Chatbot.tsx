@@ -98,7 +98,7 @@ export function Chatbot() {
       contents.push({ role: "user", parts: currentParts });
 
       const response = await ai.models.generateContent({
-        model: currentImageFile ? "gemini-3.1-pro-preview" : "gemini-3.1-flash-preview",
+        model: currentImageFile ? "gemini-3.1-pro-preview" : "gemini-3-flash-preview",
         contents: contents,
         config: {
           systemInstruction: "You are an AI assistant for OpenClaw Setup Agency. You help users understand our services (AI automation, chatbots, lead gen). Keep answers concise, professional, and helpful. If they upload an image, analyze it in the context of business automation if possible."

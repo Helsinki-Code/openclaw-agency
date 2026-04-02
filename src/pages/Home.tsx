@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
-import { ArrowRight, Bot, Zap, Shield, Workflow, Database, Layers, CheckCircle, XCircle, CheckCircle2, Server, MessageSquare, Globe, RefreshCw, TrendingUp } from "lucide-react";
+import { ArrowRight, Bot, Zap, Shield, Workflow, Database, Layers, CheckCircle, XCircle, CheckCircle2, TrendingUp, Clock, Users } from "lucide-react";
 import { Link } from "react-router-dom";
+import { servicesData } from "./Services";
+import { caseStudiesData } from "../data/caseStudies";
 
 export function Home() {
   return (
@@ -48,13 +50,15 @@ export function Home() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
-            <Link
-              to="/onboarding"
+            <a
+              href="https://calendly.com/openclaw/onboarding"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-primary-600 hover:bg-primary-500 text-white px-10 py-5 rounded-full text-lg font-bold transition-all shadow-[0_0_40px_-10px_rgba(230,0,0,0.5)] hover:shadow-[0_0_60px_-15px_rgba(230,0,0,0.6)] hover:-translate-y-1"
             >
               Deploy Your Agent
               <ArrowRight size={20} />
-            </Link>
+            </a>
             <Link
               to="/case-studies"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white border border-white/10 px-10 py-5 rounded-full text-lg font-bold transition-all backdrop-blur-sm"
@@ -223,13 +227,7 @@ export function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { icon: Server, title: "OpenClaw Setup (Core Offer)", desc: "We deploy your fully functional OpenClaw agent on your infrastructure. Includes server setup, agent configuration, and secure deployment.", highlight: "Runs locally or self-hosted." },
-              { icon: MessageSquare, title: "WhatsApp / Telegram Agents", desc: "OpenClaw is designed to live inside messaging platforms. We turn it into a customer support agent, sales assistant, or command interface.", highlight: "Message 'Find leads' and it executes." },
-              { icon: Globe, title: "Website Chatbot", desc: "Not a basic chatbot. It's an AI decision engine connected to your backend that qualifies leads, triggers workflows, and executes actions.", highlight: "Every conversation becomes automation." },
-              { icon: RefreshCw, title: "Content Repurposing Agent", desc: "We build OpenClaw systems that turn 1 piece of content into 10+ assets. Auto-generate posts, emails, captions, and schedule distribution.", highlight: "Runs continuously without supervision." },
-              { icon: TrendingUp, title: "Lead Generation Agent", desc: "We turn OpenClaw into a self-running acquisition engine. It finds leads, sends outreach, follows up automatically, and qualifies prospects.", highlight: "Your pipeline runs 24/7." }
-            ].map((service, i) => (
+            {servicesData.map((service, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -262,6 +260,76 @@ export function Home() {
         </div>
       </section>
 
+      {/* SUCCESS STORIES PREVIEW */}
+      <section className="py-32 bg-dark-950">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                Real Results, <span className="text-primary-500">Real Time</span>
+              </h2>
+              <p className="text-xl text-slate-400 font-light">
+                See how our OpenClaw deployments are delivering measurable ROI for industry leaders.
+              </p>
+            </div>
+            <Link 
+              to="/case-studies" 
+              className="group inline-flex items-center gap-2 text-primary-400 font-bold text-lg hover:text-primary-300 transition-colors"
+            >
+              View All Case Studies <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {caseStudiesData.slice(0, 2).map((study, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group relative rounded-[2.5rem] overflow-hidden border border-white/10 bg-white/5"
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={study.image} 
+                    alt={study.title} 
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute top-6 left-6 z-20">
+                    <span className="px-3 py-1 bg-primary-500 text-white text-xs font-bold rounded-full shadow-lg flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
+                      {study.status}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-8 md:p-10">
+                  <div className="text-primary-400 text-sm font-bold mb-4 uppercase tracking-widest">{study.industry}</div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 group-hover:text-primary-400 transition-colors">
+                    {study.title}
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4 mb-8">
+                    {study.metrics.slice(0, 2).map((metric, j) => (
+                      <div key={j} className="bg-white/5 p-4 rounded-xl border border-white/5">
+                        <div className="text-2xl font-bold text-white">{metric.value}</div>
+                        <div className="text-xs text-slate-500 font-bold uppercase">{metric.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <Link 
+                    to="/case-studies" 
+                    className="inline-flex items-center gap-2 text-white font-bold hover:text-primary-400 transition-colors"
+                  >
+                    Read Full Story <ArrowRight size={18} />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary-600"></div>
@@ -282,13 +350,15 @@ export function Home() {
               Stop using AI that just talks. Start using AI that executes, automates, and scales your business.
             </p>
             
-            <Link
-              to="/onboarding"
+            <a
+              href="https://calendly.com/openclaw/onboarding"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 bg-dark-950 hover:bg-black text-white px-12 py-6 rounded-full text-xl font-bold transition-all shadow-2xl hover:-translate-y-1"
             >
               Start Onboarding Now
               <ArrowRight size={24} />
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>

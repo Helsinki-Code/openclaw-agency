@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { Server, MessageSquare, Globe, RefreshCw, TrendingUp, ArrowRight } from "lucide-react";
+import { Server, MessageSquare, Globe, RefreshCw, TrendingUp, ArrowRight, Phone } from "lucide-react";
 
 export const servicesData = [
   {
@@ -8,35 +8,78 @@ export const servicesData = [
     icon: Server,
     title: "OpenClaw Setup (Core Offer)",
     desc: "We deploy your fully functional OpenClaw agent on your infrastructure. Includes server setup, agent configuration, and secure deployment.",
-    highlight: "Runs locally or self-hosted for full data control."
+    highlight: "Runs locally or self-hosted for full data control.",
+    features: [
+      "Custom Infrastructure Deployment",
+      "Secure Server Configuration",
+      "Agent Logic & Tool Setup",
+      "24/7 Performance Monitoring"
+    ]
+  },
+  {
+    id: "ai-receptionist",
+    icon: Phone,
+    title: "AI Inbound Receptionist",
+    desc: "A 24/7 voice-enabled AI agent that handles inbound calls, qualifies leads, and books appointments directly into your calendar.",
+    highlight: "Never miss a lead again, even while you sleep.",
+    features: [
+      "Real-time Voice Interaction",
+      "Lead Qualification & Scoring",
+      "Calendar Integration (Calendly/GCal)",
+      "Automated SMS/Email Follow-ups"
+    ]
   },
   {
     id: "whatsapp-telegram",
     icon: MessageSquare,
     title: "WhatsApp / Telegram Agents",
     desc: "OpenClaw is designed to live inside messaging platforms. We turn it into a customer support agent, sales assistant, or automation command interface.",
-    highlight: "Just message 'Find leads' and it executes."
+    highlight: "Just message 'Find leads' and it executes.",
+    features: [
+      "Omnichannel Messaging Support",
+      "Automated Customer Support",
+      "Sales Assistant Workflows",
+      "Command-based Task Execution"
+    ]
   },
   {
     id: "website-chatbot",
     icon: Globe,
     title: "Website Chatbot",
     desc: "Not a basic chatbot. It's an AI decision engine connected to your backend that qualifies leads, triggers workflows, and executes real actions.",
-    highlight: "Every conversation becomes automation."
+    highlight: "Every conversation becomes automation.",
+    features: [
+      "Advanced Decision Logic",
+      "Backend API Integrations",
+      "Dynamic Lead Qualification",
+      "Real-time Action Triggers"
+    ]
   },
   {
     id: "content-repurposing",
     icon: RefreshCw,
     title: "Content Repurposing Agent",
     desc: "We build OpenClaw systems that turn 1 piece of content into 10+ assets. Auto-generate posts, emails, captions, and schedule distribution.",
-    highlight: "Runs continuously without supervision."
+    highlight: "Runs continuously without supervision.",
+    features: [
+      "Multi-platform Content Generation",
+      "Automated Scheduling & Posting",
+      "Brand Voice Consistency",
+      "Performance Analytics Tracking"
+    ]
   },
   {
     id: "lead-generation",
     icon: TrendingUp,
     title: "Lead Generation Agent",
     desc: "We turn OpenClaw into a self-running acquisition engine. It finds leads, sends outreach, follows up automatically, and qualifies prospects.",
-    highlight: "Your pipeline runs 24/7."
+    highlight: "Your pipeline runs 24/7.",
+    features: [
+      "Automated Prospect Sourcing",
+      "Personalized Outreach Sequences",
+      "Smart Follow-up Systems",
+      "CRM Data Synchronization"
+    ]
   }
 ];
 

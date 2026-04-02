@@ -62,12 +62,14 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-          <Link
-            to="/onboarding"
+          <a
+            href="https://calendly.com/openclaw/onboarding"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-full text-sm font-bold transition-all shadow-lg shadow-primary-600/25 hover:shadow-primary-600/40 hover:-translate-y-0.5"
           >
             Deploy Your Agent
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -106,13 +108,15 @@ export function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <Link
-                to="/onboarding"
+              <a
+                href="https://calendly.com/openclaw/onboarding"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="bg-primary-600 text-white px-5 py-4 rounded-xl text-center font-bold mt-4 shadow-lg shadow-primary-600/20"
               >
                 Deploy Your Agent
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

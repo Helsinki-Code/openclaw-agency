@@ -5,6 +5,7 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import { ScrollToTop } from "./components/ScrollToTop";
 import { Home } from "./pages/Home";
 import { CaseStudies } from "./pages/CaseStudies";
 import { Onboarding } from "./pages/Onboarding";
@@ -17,6 +18,7 @@ import { Legal } from "./pages/Legal";
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />

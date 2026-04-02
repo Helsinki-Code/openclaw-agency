@@ -43,12 +43,7 @@ export function ServiceDetail() {
             
             <h3 className="text-2xl font-bold text-white mb-6">What's Included</h3>
             <ul className="space-y-4 mb-10">
-              {[
-                "Custom OpenClaw Agent Configuration",
-                "Integration with your existing tech stack",
-                "Automated workflow design & mapping",
-                "24/7 Monitoring and Optimization"
-              ].map((item, i) => (
+              {service.features.map((item, i) => (
                 <li key={i} className="flex items-center gap-4">
                   <div className="bg-primary-600/20 p-1.5 rounded-full text-primary-500 shrink-0">
                     <CheckCircle size={20} />
